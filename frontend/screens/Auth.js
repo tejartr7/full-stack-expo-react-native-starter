@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, Text, TextInput } from "react-native";
+import {Picker} from "@react-native-picker/picker";
 import auth from "@react-native-firebase/auth";
 import tw from "twrnc";
 import Toast from "react-native-toast-message";
@@ -10,6 +11,8 @@ function Auth({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [role, setRole] = useState("user"); // Default role set to "User"
+
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // Unsubscribe on unmount
@@ -51,8 +54,8 @@ function Auth({ navigation }) {
   }
 
   async function handleSignUp() {
-    if (!email || !password) {
-      showToast("error", "Error", "Please enter both email and password.");
+    if (!email || !password || !role) {
+      showToast("error", "Error", "Please fill in all fields.");
       return;
     }
 
@@ -68,7 +71,8 @@ function Auth({ navigation }) {
         {
           email: email,
           name: name,
-          token:token,
+          role: role, // Pass the selected role to the backend
+          token: token,
         }
       );
 
@@ -153,6 +157,16 @@ function Auth({ navigation }) {
             style={tw`border border-gray-300 rounded-lg mb-4 p-2 w-full text-white`}
             secureTextEntry
           />
+
+          <Text style={tw`text-white mb-2`}>Role</Text>
+          <Picker
+            selectedValue={role}
+            onValueChange={(itemValue, itemIndex) => setRole(itemValue)}
+            style={tw`bg-white mb-4 rounded-lg p-2`}
+          >
+            <Picker.Item label="User" value="user" />
+            <Picker.Item label="Admin" value="admin" />
+          </Picker>
 
           <TouchableOpacity
             style={tw`bg-blue-500 py-2 px-4 rounded-lg mb-4`}

@@ -38,7 +38,7 @@ export default function Home({ navigation }) {
             style={tw`bg-blue-500 py-2 px-4 m-4 rounded-lg`}
             onPress={() => navigation.navigate("addProduct")}
           >
-            <Text style={tw`font-[Poppins-SemiBold] text-white text-base`}>
+            <Text style={tw`font-[Poppins-Regular] text-white text-base`}>
               Add Product
             </Text>
           </TouchableOpacity>
@@ -46,7 +46,7 @@ export default function Home({ navigation }) {
             style={tw`bg-red-500 py-2 px-4 rounded-lg`}
             onPress={handleSignOut}
           >
-            <Text style={tw`font-[Poppins-SemiBold] text-white text-base`}>
+            <Text style={tw`font-[Poppins-Regular] text-white text-base`}>
               Sign Out
             </Text>
           </TouchableOpacity>
@@ -60,7 +60,7 @@ export default function Home({ navigation }) {
             style={tw`bg-blue-500 py-2 px-4 rounded-lg`}
             onPress={handleSignIn}
           >
-            <Text style={tw`font-[Poppins-SemiBold] text-white text-base`}>
+            <Text style={tw`font-[Poppins-Regular] text-white text-base`}>
               Sign In
             </Text>
           </TouchableOpacity>

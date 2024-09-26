@@ -20,7 +20,7 @@
         "backgroundColor": "#ffffff"
       },
       "jsEngine": "hermes",
-      "package": "com.weblancerdev.googleauth",
+      "package": "com.weblancerdev.frontend",
       "googleServicesFile": "./google-services.json"
     },
     "web": {
