@@ -4,8 +4,10 @@ import auth from "@react-native-firebase/auth";
 import axios from "axios";
 import tw from "twrnc";
 import Toast from "react-native-toast-message";
+import { useNavigation } from '@react-navigation/native';
 
 const AddProduct = () => {
+  const navigation = useNavigation();
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [productName, setProductName] = useState("");
@@ -19,17 +21,16 @@ const AddProduct = () => {
   const onAuthStateChanged = async (user) => {
     setUser(user);
     if (user) {
-      // Call backend to check if the user is admin
       try {
         const token = await user.getIdToken();
         const response = await axios.get(
-          "8000/user/getUser",
+          ":8000/user/getUser",
           {
             params: { email: user.email, token: token },
           }
         );
 
-        if (response.data.user.role === "admin") {
+        if (response.data.user.role === "admin" || response.data.user.role === "super_admin") {
           setIsAdmin(true);
         } else {
           showToast("error", "Error", "Only admins can add products.");
@@ -47,7 +48,7 @@ const AddProduct = () => {
       text1: text1,
       text2: text2,
       position: "bottom",
-      visibilityTime: 4000,
+      visibilityTime: 3000, // Show toast for 3 seconds
       autoHide: true,
       topOffset: 30,
       bottomOffset: 40,
@@ -63,19 +64,24 @@ const AddProduct = () => {
     try {
       const token = await user.getIdToken();
       const response = await axios.post(
-        "8000/products/addProduct",
+        ":8000/products/addProduct",
         {
           name: productName,
           price: productPrice,
-          email: user.email, // Pass the user's email to the backend
+          email: user.email,
           token: token,
         }
       );
 
-      if (response.status == 200) {
+      if (response.status === 200) {
         showToast("success", "Success", "Product added successfully.");
         setProductName("");
         setProductPrice("");
+
+        // Redirect after showing the toast
+        setTimeout(() => {
+          navigation.navigate("Home"); // Replace "Home" with your actual home screen name
+        }, 3000);
       } else {
         showToast("error", "Error", "Failed to add product.");
       }

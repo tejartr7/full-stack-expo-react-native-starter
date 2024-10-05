@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.3",
-    "@react-native-firebase/app": "^20.5.0",
+    "@react-native-firebase/app": "^21.0.0",
     "@react-native-firebase/auth": "^20.5.0",
+    "@react-native-firebase/firestore": "^21.0.0",
     "@react-native-google-signin/google-signin": "^13.0.2",
     "@react-native-picker/picker": "2.7.5",
     "@react-navigation/native": "^6.1.18",
@@ -29,7 +30,10 @@
     "react-native-screens": "3.31.1",
     "react-native-toast-message": "^2.2.1",
     "react-native-web": "~0.19.10",
-    "twrnc": "^4.5.1"
+    "twrnc": "^4.5.1",
+    "expo-notifications": "~0.28.18",
+    "expo-device": "~6.0.2",
+    "expo-constants": "~16.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

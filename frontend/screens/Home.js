@@ -1,5 +1,5 @@
+import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native'; // Import Button from 'react-native'
 import auth from '@react-native-firebase/auth';
 import tw from 'twrnc';
 
@@ -15,13 +15,13 @@ export default function Home({ navigation }) {
   }, []);
 
   const handleSignIn = () => {
-    navigation.navigate('auth');
+    navigation.navigate('SignIn');
   };
 
   const handleSignOut = async () => {
     try {
       await auth().signOut();
-      setUser(null);  // Set user to null after sign out
+      setUser(null);
     } catch (error) {
       console.log('Error signing out:', error);
     }
@@ -36,10 +36,26 @@ export default function Home({ navigation }) {
           </Text>
           <TouchableOpacity
             style={tw`bg-blue-500 py-2 px-4 m-4 rounded-lg`}
-            onPress={() => navigation.navigate("addProduct")}
+            onPress={() => navigation.navigate('AddProduct')}
           >
             <Text style={tw`font-[Poppins-Regular] text-white text-base`}>
               Add Product
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={tw`bg-blue-500 py-2 px-4 m-4 rounded-lg`}
+            onPress={() => navigation.navigate('Products')}
+          >
+            <Text style={tw`font-[Poppins-Regular] text-white text-base`}>
+              View All Products
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={tw`bg-blue-500 py-2 px-4 m-4 rounded-lg`}
+            onPress={() => navigation.navigate('ShowUsers')}
+          >
+            <Text style={tw`font-[Poppins-Regular] text-white text-base`}>
+              Show All Users
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
