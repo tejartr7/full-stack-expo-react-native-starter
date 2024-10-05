@@ -37,8 +37,4 @@ yarn-error.*
 /ios
 google-services.json
 .google-services.json
-privatekey.json
-.privatekey.json
-.privatekey.js
-privatekey.js
 .env
