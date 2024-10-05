@@ -24,7 +24,7 @@ const AddProduct = () => {
       try {
         const token = await user.getIdToken();
         const response = await axios.get(
-          ":8000/user/getUser",
+          "https://react-native-backend-5nw6.onrender.com/user/getUser",
           {
             params: { email: user.email, token: token },
           }
@@ -64,7 +64,7 @@ const AddProduct = () => {
     try {
       const token = await user.getIdToken();
       const response = await axios.post(
-        ":8000/products/addProduct",
+        "https://react-native-backend-5nw6.onrender.com/products/addProduct",
         {
           name: productName,
           price: productPrice,

@@ -37,7 +37,7 @@ const SignUpPage = ({ navigation }) => {
       const token = await userCredential.user.getIdToken();
       // Optionally, send user details to your backend
       const response = await axios.post(
-        ":8000/user/addUser",
+        "https://react-native-backend-5nw6.onrender.com/user/addUser",
         {
           email: email,
           name: name,

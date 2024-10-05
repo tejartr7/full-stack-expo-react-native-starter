@@ -22,7 +22,7 @@ const ShowAdmins = () => {
 
       // Fetch all users
       const response = await axios.get(
-        ":8000/user/getAllUsers",
+        "https://react-native-backend-5nw6.onrender.com/user/getAllUsers",
         {
           params: {
             token: token,
@@ -33,7 +33,7 @@ const ShowAdmins = () => {
 
       // Fetch current user's role based on email to check if they are super admin
       const userResponse = await axios.get(
-        ":8000/user/getUser",
+        "https://react-native-backend-5nw6.onrender.com/user/getUser",
         {
           params: {
             email: currentUser.email, // Using email to get current user's role
@@ -76,7 +76,7 @@ const ShowAdmins = () => {
     try {
       const token = await currentUser.getIdToken();
       const response = await axios.put(
-        `:8000/user/updateUser/${userId}`,
+        `https://react-native-backend-5nw6.onrender.com/user/updateUser/${userId}`,
         { params: { token: token, role: selectedRole } } // Passing token in params
       );
 

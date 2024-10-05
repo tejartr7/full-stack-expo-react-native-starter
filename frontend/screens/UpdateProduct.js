@@ -34,7 +34,7 @@ const UpdateProduct = ({ route, navigation }) => {
       const token = await user.getIdToken();
 
       const response = await axios.put(
-        `:8000/products/updateProduct/${product._id}`,
+        `https://react-native-backend-5nw6.onrender.com/products/updateProduct/${product._id}`,
         {
           name: productName,
           price: productPrice,

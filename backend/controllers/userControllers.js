@@ -16,7 +16,6 @@ export const getUser = async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ email });
-    console.log(existingUser)
     if (!existingUser) {
       return res.status(409).json({ message: "User does not exist" });
     }
@@ -60,9 +59,6 @@ export const addUser = async (req, res) => {
 };
 
 export const getAllUsers = async (req, res) => {
-  console.log(req.body);
-  console.log(req.params);
-  console.log(req.query);
   const { token } = req.query;
   const verifiedUser = await verifyToken(token, res);
   if (!verifiedUser) {

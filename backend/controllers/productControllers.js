@@ -22,12 +22,11 @@ export const getProducts = async (req, res) => {
 
 // Add a new product
 export const addProduct = async (req, res) => {
-  console.log("call came to add product");
+ 
   const { email, name, price, token } = req.body;
 
   const verifiedUser = await verifyToken(token, res);
   if (!verifiedUser) {
-    console.log("token not verified");
     return res.status(401).json({ message: "Unauthorized" });
   }
 
@@ -80,7 +79,6 @@ export const updateProduct = async (req, res) => {
   existingProduct.price = price;
 
   await existingProduct.save();
-  console.log("product updated");
   return res.status(200).json({ message: "Product updated successfully" });
   // You can add the update logic here
 };

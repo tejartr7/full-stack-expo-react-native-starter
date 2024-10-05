@@ -20,7 +20,7 @@ const Productspage = ({ navigation, route }) => {
       try {
         const token = await user.getIdToken();
         const userResponse = await axios.get(
-          ":8000/user/getUser",
+          "https://react-native-backend-5nw6.onrender.com/user/getUser",
           {
             params: {
               email: user.email,
@@ -45,7 +45,7 @@ const Productspage = ({ navigation, route }) => {
       try {
         const token = await user.getIdToken();
         const productsResponse = await axios.get(
-          ":8000/products/",
+          "https://react-native-backend-5nw6.onrender.com/products/",
           {
             params: {
               token: token,
@@ -98,7 +98,7 @@ const Productspage = ({ navigation, route }) => {
               const token = await user.getIdToken();
 
               const response = await axios.delete(
-                `:8000/products/deleteProduct/${product._id}`,
+                `https://react-native-backend-5nw6.onrender.com/products/deleteProduct/${product._id}`,
                 {
                   params: {
                     token: token,
