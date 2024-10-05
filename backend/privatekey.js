@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
-const privateKey = process.env.private_key;
+const privateKey = process.env.private_key.replace(/\\n/g, '\n');
 const serviceCredentials = {
   type: "service_account",
   project_id: process.env.project_id,
