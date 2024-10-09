@@ -8,6 +8,7 @@ import SignInPage from "./screens/Signin";
 import SignUpPage from "./screens/Signup";
 import UpdateProduct from "./screens/UpdateProduct";
 import ShowAdmins from "./screens/ShowAdmins";
+import Notification from "./screens/Notification";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Stack.Screen name="SignUp" component={SignUpPage} />
         <Stack.Screen name="UpdateProduct" component={UpdateProduct} />
         <Stack.Screen name="ShowUsers" component={ShowAdmins} />
+        <Stack.Screen name="Notification" component={Notification} />
       </Stack.Navigator>
     </NavigationContainer>
   );
